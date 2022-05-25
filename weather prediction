@@ -1,0 +1,20 @@
+from mpl_toolkits.mplot3d import Axes3D
+from sklearn.preprocessing import StandardScaler
+from google.colab import files
+uploaded = files.upload()
+import io
+dataset = pd.read_csv(io.BytesIO(uploaded['weather.csv']))
+
+import matplotlib.pyplot as plt # plotting
+import numpy as np # linear algebra
+import os # accessing directory structure
+import pandas as pd 
+nRowsRead = 1000 # specify 'None' if want to read whole file
+df1 = pd.read_csv('weather.csv', delimiter=',', nrows = nRowsRead)
+df1.dataframeName = 'weather.csv'
+nRow, nCol = df1.shape
+print(f'There are {nRow} rows and {nCol} columns')
+df1.head(5)
+df1.plot.bar(x='Rainfall' ,y = 'Sunshine')
+df1.plot.scatter(x = 'Rainfall',y = 'Sunshine',alpha= 0.5)
+plt.show()
